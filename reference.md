@@ -5,8 +5,8 @@ layout: reference
 ## Glossary
 
 {:auto_ids}
-#### absolute path
-:   A [path](#path) that refers to a particular location in a file system.
+### absolute path
+    A [path](#path) that refers to a particular location in a file system.
     Absolute paths are usually written with respect to the file system's
     [root directory](#root-directory),
     and begin with either "/" (on Unix) or "\\" (on Microsoft Windows).
@@ -138,7 +138,7 @@ layout: reference
 :   To send a command's output to a file rather than to the screen or another command,
     or equivalently to read a command's input from a file.
 
-#### #### regular expression
+#### regular expression
 :   A pattern that specifies a set of character strings.
     REs are most often used to find sequences of characters in strings.
 
