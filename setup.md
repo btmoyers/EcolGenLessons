@@ -6,7 +6,7 @@ root: .
 
 You need to download some files to follow this lesson:
 
-1. Download [shell_data.tar.gz](https://figshare.com/articles/Data_Carpentry_Genomics_beta_2_0/7726454) and move the file to your Desktop.
+1. Download [shell_data.tar.gz](https://figshare.com/articles/Data_Carpentry_Genomics_beta_2_0/7726454) from the Data Carpentry Genomics Repository and move the file to your Desktop.
 2. Unzip/extract the file (ask if you need help with this step). You should end up with a new folder called *shell_data* on your Desktop.
 3. Open a terminal and type `cd`, then press the Enter key. That last step will make sure you start with your home folder as your working directory.
 
