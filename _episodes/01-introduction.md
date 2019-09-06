@@ -1,7 +1,7 @@
 ---
 title: "Introducing the Shell"
 teaching: 20
-exercises: 10
+exercises: 5
 questions:
 - "What is a command shell and why would I use one?"
 - "How can I move around on my computer?"
@@ -51,63 +51,61 @@ In this lesson you will learn how to use the command line interface to move arou
 ## How to access the shell
 
 On a Mac or Linux machine, you can access a shell through a program called Terminal, which is already available
-on your computer. If you're using Windows, you'll need to download a separate program to access the shell.
+on your computer. If you're using Windows, you'll need to download a separate program to access the shell. We will spend most of our time learning about the basics of the shell
+by manipulating some experimental data. 
 
-We will spend most of our time learning about the basics of the shell
-by manipulating some experimental data. Some of the data we're going to be working with is quite large, and
-we're also going to be using several bioinformatic packages in later
-lessons to work with this data. To avoid having to spend time 
-downloading the data and downloading and installing all of the software,
-we're going to be working with data on a remote server. 
+The Shell is a program which runs other programs rather than doing calculations itself.
+Those programs can be as complicated as climate modeling software and as simple as a
+program that creates a new directory. The simple programs which are used to perform
+stand alone tasks are usually refered to as commands.
+The most popular Unix shell is Bash, (the Bourne Again SHell --- so-called because
+it's derived from a shell written by Stephen Bourne).
+Bash is the default shell on most modern implementations of Unix
+and in most packages that provide Unix-like tools for Windows.
 
-You can log-in to the remote server using the instructions 
-[here](http://www.datacarpentry.org/cloud-genomics/02-logging-onto-cloud/#logging-onto-a-cloud-instance). 
-Your instructor will supply the `ip_address` and password that you need to login.
-
-Each of you will have a different `ip_address`. This will 
-prevent us from accidentally changing each other's files as we work through the
-exercises. The password will be the same for everyone. 
-
-After logging in, you will see a screen showing something like this: 
+When the shell is first opened, you are presented with a **prompt**,
+indicating that the shell is waiting for input.
 
 ~~~
-Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-48-generic x86_64)
+$
+~~~
+{: .language-bash}
 
- * Documentation:  https://help.ubuntu.com/
+The shell typically uses `$ ` as the prompt, but may use a different symbol.
+In the examples for this lesson, we'll show the prompt as `$ `.
+Most importantly:
+when typing commands, either from these lessons or from other sources,
+*do not type the prompt*, only the commands that follow it.
 
-  System information as of Sat Feb  2 00:08:17 UTC 2019
+So let's try our first command, which will list the contents of the current directory:
 
-  System load: 0.0                Memory usage: 5%   Processes:       82
-  Usage of /:  29.9% of 98.30GB   Swap usage:   0%   Users logged in: 0
+~~~
+$ ls
+~~~
+{: .language-bash}
 
-  Graph this data and manage this system at:
-    https://landscape.canonical.com/
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
-
-597 packages can be updated.
-444 updates are security updates.
-
-New release '16.04.5 LTS' available.
-Run 'do-release-upgrade' to upgrade to it.
-
-
-Last login: Fri Feb  1 22:34:53 2019 from c-73-116-43-163.hsd1.ca.comcast.net
+~~~
+Desktop     Downloads   Movies      Pictures
+Documents   Library     Music       Public
 ~~~
 {: .output}
 
-This provides a lot of information about the remote server that you're logging in to. We're not going to use most of this information for
-our workshop, so you can clear your screen using the `clear` command. 
+> ## Command not found
+> If the shell can't find a program whose name is the command you typed, it
+> will print an error message such as:
+>
+> ~~~
+> $ ks
+> ~~~
+> {: .language-bash}
+> ~~~
+> ks: command not found
+> ~~~
+> {: .output}
+>
+> Usually this means that you have mis-typed the command.
+{: .callout}
 
-~~~
-$ clear
-~~~
-{: .bash}
-
-This will scroll your screen down to give you a fresh screen and will make it easier to read. 
-You haven't lost any of the information on your screen. If you scroll up, you can see everything that has been output to your screen
-up until this point.
 
 ## Navigating your file system
 
@@ -120,26 +118,6 @@ which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
-> ## Preparation Magic
->
-> If you type the command:
-> `PS1='$ '`
-> into your shell, followed by pressing the <kbd>Enter</kbd> key,
-> your window should look like our example in this lesson.  
-> This isn't necessary to follow along (in fact, your prompt may have
-> other helpful information you want to know about).  This is up to you!  
-{: .callout}
-
-~~~
-$
-~~~
-{: .bash}
-
-The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
-your shell may use a different character as a prompt and may add information before
-the prompt. When typing commands, either from these lessons or from other sources,
-do not type the prompt, only the commands that follow it.
-
 Let's find out where we are by running a command called `pwd`
 (which stands for "print working directory").
 At any moment, our **current working directory**
@@ -148,8 +126,7 @@ i.e.,
 the directory that the computer assumes we want to run commands in,
 unless we explicitly specify something else.
 Here,
-the computer's response is `/home/dcuser`,
-which is the top level directory within our cloud system:
+the computer's response will be specific to your operating system, file system, and user name:
 
 ~~~
 $ pwd
@@ -157,7 +134,7 @@ $ pwd
 {: .bash}
 
 ~~~
-/home/dcuser
+/Users/malusmalls
 ~~~
 {: .output}
 
@@ -170,7 +147,10 @@ $ ls
 {: .bash}
 
 ~~~
-R  r_data  shell_data
+Applications		Downloads		Pictures
+Creative Cloud Files	Library			Public
+Desktop			Movies
+Documents		Music
 ~~~
 {: .output}
 
@@ -183,15 +163,15 @@ The command to change locations in our file system is `cd`, followed by a
 directory name to change our working directory.
 `cd` stands for "change directory".
 
-Let's say we want to navigate to the `shell_data` directory we saw above.  We can
+Let's say we want to navigate to the `shell_data` directory we saw above.  I can
 use the following command to get there:
 
 ~~~
-$ cd shell_data
+$ cd Desktop/shell_data
 ~~~
 {: .bash}
 
-Let's look at what is in this directory:
+You might need to use a different set of "directions", depending, again, on your file system. Once you've navigated to `shell_data`, let's look at what is in this directory:
 
 ~~~
 $ ls
