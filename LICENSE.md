@@ -51,7 +51,6 @@ Except where otherwise noted, the example programs and other software
 provided by Software Carpentry and Data Carpentry are made available under the
 [OSI][osi]-approved
 [MIT license][mit-license].
->>>>>>> temp/gh-pages
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
