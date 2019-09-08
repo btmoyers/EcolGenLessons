@@ -1,6 +1,6 @@
 ---
 title: "Introducing the Shell"
-teaching: 20
+teaching: 15
 exercises: 5
 questions:
 - "What is a command shell and why would I use one?"
@@ -255,7 +255,6 @@ SRR097977.fastq  SRR098026.fastq
 
 This directory contains two files with `.fastq` extensions. FASTQ is a format
 for storing information about sequencing reads and their quality.
-We will be learning more about FASTQ files in a later lesson.
 
 ### Shortcut: Tab Completion
 
