@@ -1,7 +1,7 @@
 ---
 title: "Navigating Files and Directories"
-teaching: 30
-exercises: 20
+teaching: 20
+exercises: 10
 questions:
 - "How can I perform operations on files outside of my working directory?"
 - "What are some navigational shortcuts I can use to make my work more efficient?"
