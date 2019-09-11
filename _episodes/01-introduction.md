@@ -1,7 +1,7 @@
 ---
 title: "Introducing the Shell"
-teaching: 15
-exercises: 5
+teaching: 20
+exercises: 10
 questions:
 - "What is a command shell and why would I use one?"
 - "How can I move around on my computer?"
@@ -203,6 +203,13 @@ there are no decorations, it's a file.
 
 ~~~
 $ man ls
+~~~
+{: .bash}
+
+If you are working on a Windows OS and get an error message that `man` is not a command known to your bash shell, try:
+
+~~~
+$ ls --help
 ~~~
 {: .bash}
 
