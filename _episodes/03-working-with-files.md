@@ -1,7 +1,7 @@
 ---
 title: "Working with Files and Directories"
-teaching: 30
-exercises: 15
+teaching: 20
+exercises: 10
 questions:
 - "How can I view and search file contents?"
 - "How can I create, copy and delete files and directories?"
@@ -74,21 +74,21 @@ $ ls /usr/bin/*.sh
 {: .bash}
 
 ~~~
-/usr/bin/amuFormat.sh  /usr/bin/gettext.sh  /usr/bin/gvmap.sh
+/usr/bin/power_report.sh
 ~~~
 {: .output}
 
-Lists every file in `/usr/bin` that ends in the characters `.sh`.
+Lists every file in `/usr/bin` that ends in the characters `.sh`, which in my case is just one file. The `/usr/bin` directory structure is common to unix-based operating systems, including Linux and Mac OS, and is where common user executable files are stored. The convenience of this structure is that the location `/usr/bin` is by default part of the bash `PATH` environmental variables, or where bash knows to look for commands/programs/scripts. There is no direct equivalent in Windows, although `c:\windows\system32` serves a very similar function. We'll discuss the bash `PATH` further in future lessons.
 
 > ## Home vs. Root
 > 
 > The `/` character is another navigational shortcut and refers to your root directory.
 > The root directory is the highest level directory in your file system and contains
 > files that are important for your computer to perform its daily work, but which you usually won't
-> have to interact with directly. In our case,
-> the root directory is two levels above our home directory, so `cd` or `cd ~` will take you to `/home/dcuser`
-> and `cd /` will take you to `/`, which is equivalent to `~/../../`. Try not to worry if this is confusing,
-> it will all become clearer with practice.
+> have to interact with directly. In my case,
+> the root directory is two levels above my home directory, so `cd` or `cd ~` will take me to `/Users/malusmalls`
+> and `cd /` will take me to `/`, which is equivalent to `~/../../`. Depending on the organization of your file structure, your own navigation may differ. In particular, Windows users may need to specify root as `c:\`. Try not to worry if this is confusing,
+> it will (hopefully) all become clearer with practice.
 > 
 > While you will be using the root at the beginning of your absolute paths, it is important that you avoid 
 > working with data in these higher-level directories, as your commands can permanently alter files that the 
@@ -97,14 +97,14 @@ Lists every file in `/usr/bin` that ends in the characters `.sh`.
 {: .callout}
 
 > ## Exercise
-> Do each of the following tasks from your current directory using a single
+> Locate your root directory and pick a specific directory within it that is not within `~/Desktop/shell_data`. For that path, do each of the following tasks from your current directory (`~/Desktop/shell_data`) using a single
 > `ls` command for each:
 > 
-> 1.  List all of the files in `/usr/bin` that start with the letter 'c'.
-> 2.  List all of the files in `/usr/bin` that contain the letter 'a'. 
-> 3.  List all of the files in `/usr/bin` that end with the letter 'o'.
+> 1.  List all of the files in `/your/chosen/directory` that start with the letter 'c'.
+> 2.  List all of the files in `/your/chosen/directory` that contain the letter 'a'. 
+> 3.  List all of the files in `/your/chosen/directory` that end with the letter 'o'.
 >
-> Bonus: List all of the files in `/usr/bin` that contain the letter 'a' or the
+> Bonus: List all of the files in `/your/chosen/directory` that contain the letter 'a' or the
 > letter 'c'.
 > 
 > Hint: The bonus question requires a Unix wildcard that we haven't talked about
@@ -112,6 +112,7 @@ Lists every file in `/usr/bin` that ends in the characters `.sh`.
 > what you need to solve the bonus problem.
 > 
 > > ## Solution
+> > Using the example directory `/usr/bin`
 > > 1. `ls /usr/bin/c*`
 > > 2. `ls /usr/bin/*a*`
 > > 3. `ls /usr/bin/*o`  
