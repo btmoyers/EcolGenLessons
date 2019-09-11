@@ -1,7 +1,7 @@
 ---
 title: "Navigating Files and Directories"
-teaching: 20
-exercises: 10
+teaching: 25
+exercises: 15
 questions:
 - "How can I perform operations on files outside of my working directory?"
 - "What are some navigational shortcuts I can use to make my work more efficient?"
@@ -68,7 +68,7 @@ $ pwd
 {: .bash}
 
 ~~~
-/home/dcuser/shell_data
+/Users/malusmalls/Desktop/shell_data
 ~~~
 {: .output}
 
@@ -91,7 +91,7 @@ $ ls ../../
 ~~~
 {: .bash}
 
-prints the contents of `/home`, which is one level up from your root directory. 
+prints the contents of `/Users`, which is one level up from my home directory. 
 
 > ## Finding hidden directories
 >
@@ -223,24 +223,24 @@ $ pwd
 ~~~
 {: .bash}
 
-You will see: 
+I will see (and you will see something similar but with your specific username and file structure): 
 
 ~~~
-/home/dcuser
+/Users/malusmalls/
 ~~~
 {: .output}
 
-This is the full name of your home directory. This tells you that you
-are in a directory called `dcuser`, which sits inside a directory called
-`home` which sits inside the very top directory in the hierarchy. The
+This is the full name of my home directory. This tells me that I
+am in a directory called `malusmalls`, which sits inside a directory called
+`Users` which sits inside the very top directory in the hierarchy (the root). The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `dcuser` is a
-directory in `home` which is a directory in `/`.
+referred to as the *root directory*. So, to summarize: `malusmalls` is a
+directory in `Users` which is a directory in `/`.
 
-Now enter the following command:
+Now enter the following command (modified for your file system):
 
 ~~~
-$ cd /home/dcuser/shell_data/.hidden
+$ cd /Users/malusmalls/Desktop/shell_data/.hidden
 ~~~
 {: .bash}
 
@@ -323,7 +323,7 @@ $ ls ~
 {: .bash}
 
 ~~~
-R  r_data  shell_data
+
 ~~~
 {: .output}
 
