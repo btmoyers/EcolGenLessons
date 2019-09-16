@@ -1,22 +1,26 @@
 ---
 title: "Working with Files and Directories"
-teaching: 20
+teaching: 25
 exercises: 10
 questions:
 - "How can I view and search file contents?"
 - "How can I create, copy and delete files and directories?"
 - "How can I control who has permission to modify a file?"
 - "How can I repeat recently used commands?"
+- "How can I log into another computer and move files there?"
 objectives:
 - View, search within, copy, move, and rename files. Create new directories.
 - Use wildcards (`*`) to perform operations on multiple files.
 - Make a file read only.
 - Use the `history` command to view and repeat recently used commands.
+- Log onto a remote server and move a files there from a local computer.
 keypoints:
 - "You can view file contents using `less`, `cat`, `head` or `tail`."
 - "The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories."
 - "You can view file permissions using `ls -l` and change permissions using `chmod`."
 - "The `history` command and the up arrow on your keyboard can be used to repeat recently used commands."
+- "You can log onto remote computers using `ssh` and move files between computers using `scp`."
+
 ---
 
 ## Working with Files
@@ -626,3 +630,29 @@ you will be asked whether you want to override your permission settings.
 > > {: .output}
 > {: .solution}
 {: .challenge}
+
+### Logging on
+
+Everything we have done so far has been on our own computers, but many of the
+analyses and data files that you would like to work with will be too large or complex for the
+capacities of a regular laptop or desktop computer. To get these analyses done, you will need to 
+access high performance computing resources by logging on to a remote server or cloud instance.
+
+To do this we will use a protocol called Secure Shell (SSH) that, as the name implies, provides you
+with a secure way to use a [shell](http://swcarpentry.github.io/shell-novice). In our case, the 
+shell will be running on a remote machine, the Massachussetts Green High Performance Computing Cluster 
+[(MGHPCC](https://www.mghpcc.org/). Thie SSH protocol is available for every operating system, but 
+sometimes requires additional software (e.g. PuTTY on Windows, if you don't have a bash shell installed).
+
+
+~~~
+$ cd ..
+$ rm -r backup
+~~~
+{: .bash}
+
+Under development.
+
+### Moving files between computers
+
+Under development.
