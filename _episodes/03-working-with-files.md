@@ -641,18 +641,85 @@ access high performance computing resources by logging on to a remote server or 
 To do this we will use a protocol called Secure Shell (SSH) that, as the name implies, provides you
 with a secure way to use a [shell](http://swcarpentry.github.io/shell-novice). In our case, the 
 shell will be running on a remote machine, the Massachussetts Green High Performance Computing Cluster 
-[(MGHPCC](https://www.mghpcc.org/). Thie SSH protocol is available for every operating system, but 
+[(MGHPCC](https://www.mghpcc.org/). The SSH protocol is available for every operating system, but 
 sometimes requires additional software (e.g. PuTTY on Windows, if you don't have a bash shell installed).
 
-
+The secure shell command is ssh, and uses the syntax `ssh username@computer` to connect. So, for me to connect
+to the MGHPCC, I need to execute:
 ~~~
-$ cd ..
-$ rm -r backup
+$ ssh bm42b@ghpcc06.umassrc.org
+bm42b@ghpcc06.umassrc.org's password: 
 ~~~
 {: .bash}
 
-Under development.
+Then I will be prompted for my password. After I enter it correctly, I see:
+
+~~~
+Last login: Sun Sep 15 22:21:36 2019 from 108.20.96.6
+NOTICE TO USERS
+-----------------
+This is the University of Massachusetts information technology environment.
+You MUST be authorized to use these resources. By your use of these resources,
+you have agreed to abide by the highest standards of responsibility to your
+colleagues who share this environment. You are required to comply with ALL
+University policies along with state and federal laws concerning appropriate
+use of information technology. Non-compliance is considered a serious breach
+of community standards and may result in disciplinary and/or legal action.
+
+To subscribe to the new GHPCC user discussion list, email:
+ ghpcc-discussion-request@list.umassmed.edu with subject "subscribe"
+ Or go to https://www.umassrc.org/hpc/ghpcc-discussion.php
+
+For an introduction to the UMass GHPCC and documentation, please see:
+ http://wiki.umassrc.org/
+
+For specifics about the queues and the nodes available to them, please see:
+ http://wiki.umassrc.org/wiki/index.php/Queue_Descriptions
+
+For questions related to the UMass GHPCC cluster please contact:
+ hpcc-support@umassmed.edu
+
+2019/08/31 11:00AM - This morning the MGHPCC data center experienced two 
+'power sags' at 6:44AM.  We are working to get affected nodes back online.
+Please check your jobs in case you need to resubmit any jobs.  Again, our
+apologies for the difficulty.
+
+2019/09/13 ~6:30PM - The MGHPCC data center experienced a full power outage.
+Jobs running on nodes impacted by the outage will need to be restarted.  We
+apologize for the difficulty and continue to work with MGHPCC facility staff to determine root cause.
+
+[bm42b@ghpcc06 ~]$
+~~~
+{: .bash}
+
+This last prompt is different from my old one, because I am no longer using the shell to talk to my local computer.
+I am now using the shell to talk to a remote computer, the MGHPCC! 
+
+If this is your first time logging on to a remote computer with `ssh`, you will be prompted to agree to the authenticity of the remote computer's public key. The public key is sometimes represented in a "fingerprint" format for easier verification purposes. SSH keys are outside the scope of this lesson, but are an interesting topic in themselves! There is more detail on the ins and outs of SSH in this [older Software Carpentry shell lesson](https://v4.software-carpentry.org/shell/ssh.html). For now, agree to accept the key.
+
+If this is your first time logging onto the MGHPCC, you will be asked to change your password. Pick something you will remember, because if you get locked out you will have to contact the system administrator to get access again.
+
+Once you've logged in, look around! 
+
+~~~
+$ pwd
+/home/bm42b
+$ ls
+$
+~~~
+{: .bash}
+
+`pwd` tells me that I am standing in a directory named the same as my username, which is in a directory called home, which is in the root directory. `ls` gives me no output. This is because there is nothing here in my home directory (yet)!
 
 ### Moving files between computers
+Now that you know how to run secure shell, you might predict what secure copy (`scp`) does. Secure copy allows you to 
+copy files to or from a remote computer, and it takes advantage of the remote connection setup used by secure shell. 
+The syntax is simple and is similar to that of `cp` and `ssh`. To copy a file, we first specify the source location 
+of the file that we are copying followed by the destination directory to where we are copying the file.
+
+When specifying the source and destination on a remote computer, you write `username@computer:` (the same as with `ssh`, 
+followed by a colon) then the path of the file or directory. If either the source or destination is on a remote computer,
+then we have to type the password for the user account(s) that are being used to make the connection. Secure copy may 
+also give us feedback on the progress of our transfer.
 
 Under development.
