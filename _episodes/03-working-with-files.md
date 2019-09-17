@@ -641,7 +641,7 @@ access high performance computing resources by logging on to a remote server or 
 To do this we will use a protocol called Secure Shell (SSH) that, as the name implies, provides you
 with a secure way to use a [shell](http://swcarpentry.github.io/shell-novice). In our case, the 
 shell will be running on a remote machine, the Massachussetts Green High Performance Computing Cluster 
-[(MGHPCC](https://www.mghpcc.org/). The SSH protocol is available for every operating system, but 
+([MGHPCC](https://www.mghpcc.org/)). The SSH protocol is available for every operating system, but 
 sometimes requires additional software (e.g. PuTTY on Windows, if you don't have a bash shell installed).
 
 The secure shell command is ssh, and uses the syntax `ssh username@computer` to connect. So, for me to connect
