@@ -1,7 +1,7 @@
 ---
 title: "Working with Files and Directories"
-teaching: 25
-exercises: 10
+teaching: 40
+exercises: 15
 questions:
 - "How can I view and search file contents?"
 - "How can I create, copy and delete files and directories?"
@@ -78,11 +78,11 @@ $ ls /usr/bin/*.sh
 {: .bash}
 
 ~~~
-/usr/bin/power_report.sh
+/usr/bin/get_bluetooth_device_class.sh  /usr/bin/lprsetup.sh  /usr/bin/start_bluetoothd.sh  /usr/bin/start_bluetoothlog.sh  /usr/bin/unix-lpr.sh
 ~~~
 {: .output}
 
-Lists every file in `/usr/bin` that ends in the characters `.sh`, which in my case is just one file. The `/usr/bin` directory structure is common to unix-based operating systems, including Linux and Mac OS, and is where common user executable files are stored. The convenience of this structure is that the location `/usr/bin` is by default part of the bash `PATH` environmental variables, or where bash knows to look for commands/programs/scripts. There is no direct equivalent in Windows, although `c:\windows\system32` serves a very similar function. We'll discuss the bash `PATH` further in future lessons.
+Lists every file in `/usr/bin` that ends in the characters `.sh`, which in my case is five files. The `/usr/bin` directory structure is common to unix-based operating systems, including Linux and Mac OS, and is where common user executable files are stored. The convenience of this structure is that the location `/usr/bin` is by default part of the bash `PATH` environmental variables, or where bash knows to look for commands/programs/scripts. There is no direct equivalent in Windows, although `c:\windows\system32` serves a very similar function. We'll discuss the bash `PATH` further in future lessons.
 
 > ## Home vs. Root
 > 
@@ -720,6 +720,14 @@ of the file that we are copying followed by the destination directory to where w
 When specifying the source and destination on a remote computer, you write `username@computer:` (the same as with `ssh`, 
 followed by a colon) then the path of the file or directory. If either the source or destination is on a remote computer,
 then we have to type the password for the user account(s) that are being used to make the connection. Secure copy may 
-also give us feedback on the progress of our transfer.
+also give us feedback on the progress of our transfer. 
 
-Under development.
+Let's try to move one of the fastq files. You will need to be "standing" locally, which means on your own computer. You can `logout` of the remote server, but it will be more convenient to open a second bash shell terminal. Remember, the command grammar is `scp /path/to/source /path/to/destination`, possibly with `username@computer:` before the path if either the source or destination are remote. You will need to specify the correct paths and username for your own system.
+
+~~~
+$ scp /Users/malusmalls/Desktop/shell_data/untrimmed_fastq/SRR097977.fastq bm42b@ghpcc06.umassrc.org:/home/bm42b/
+bm42b@ghpcc06.umassrc.org's password: 
+~~~
+{: .bash}
+
+Now check back on your home directory on the MGHPCC with `ls`. Is the fastq file there?
