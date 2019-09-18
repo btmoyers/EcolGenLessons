@@ -731,3 +731,14 @@ bm42b@ghpcc06.umassrc.org's password:
 {: .bash}
 
 Now check back on your home directory on the MGHPCC with `ls`. Is the fastq file there?
+
+> ## Exercise
+> 
+> How can you move the whole shell_data directory onto your MGHPCC home directory? Hint: you're going to need to look at the options for `scp`.
+> 
+> > ## Solution
+> > `scp -r`, for recursive, will secure copy a directory and everything it contains.
+> {: .solution}
+{: .challenge}
+
+Use what you know so far to delete the single fastq file from your home directory and securely copy the whole `shell_data/` directory there instead.
