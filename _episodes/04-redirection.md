@@ -19,6 +19,18 @@ keypoints:
 - "`basename` gets rid of repetitive parts of names."
 ---
 
+All of the exercises from this section on will be run on the remote server (with one exception--can you guess which one that might be?). Log on to the MGHPCC using `ssh your-user-name@ghpcc06.umassrc.org`.
+
+> ## Exercise
+> 
+> Use what you know so far to delete the single fastq file from your home directory and securely copy the whole `shell_data/` directory there instead. To move the whole directory and its contents at once you're going to need to look at the options for `scp`. Remember that when you are applying the same command to a directory and every thing it contains that is called a 'recursive command'.
+> 
+> > ## Solution
+> > `scp -r`, for recursive, will secure copy a directory and everything it contains. So to move the whole `she;;_data/` directory at once, you would type `scp -r /path/to/shell_data/ your-user-name@ghpcc06.umassrc.org:/home/your-user-name/`.
+> {: .solution}
+{: .challenge}
+
+
 ## Searching files
 
 We discussed in a previous episode how to search within a file using `less`. We can also
