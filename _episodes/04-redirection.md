@@ -1,7 +1,7 @@
 ---
 title: "Redirection"
-teaching: 30
-exercises: 15
+teaching: 35
+exercises: 30
 questions:
 - "How can I search within files?"
 - "How can I combine existing commands to do new things?"
@@ -26,7 +26,7 @@ All of the exercises from this section on will be run on the remote server (with
 > Use what you know so far to delete the single fastq file from your home directory and securely copy the whole `shell_data/` directory there instead. To move the whole directory and its contents at once you're going to need to look at the options for `scp`. Remember that when you are applying the same command to a directory and every thing it contains that is called a 'recursive command'.
 > 
 > > ## Solution
-> > `scp -r`, for recursive, will secure copy a directory and everything it contains. So to move the whole `she;;_data/` directory at once, you would type `scp -r /path/to/shell_data/ your-user-name@ghpcc06.umassrc.org:/home/your-user-name/`.
+> > `scp -r`, for recursive, will secure copy a directory and everything it contains. So to move the whole `shell_data/` directory at once, you would type `scp -r /path/to/shell_data/ your-user-name@ghpcc06.umassrc.org:/home/your-user-name/`.
 > {: .solution}
 {: .challenge}
 
