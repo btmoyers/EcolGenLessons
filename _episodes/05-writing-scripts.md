@@ -11,7 +11,7 @@ objectives:
 - Use `chmod` to make a script an executable program.
 keypoints:
 - Scripts are a collection of commands executed together.
-- Transferring information to and from virtual and local computers.
+- Downloading information to remote computers.
 ---
 
 <script language="javascript" type="text/javascript">
