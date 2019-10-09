@@ -275,7 +275,7 @@ You will notice that we did not need to schedule this light and fast bash script
 
 > ## Exercise
 >
-> 1. Write a bash script that searches for sequences that contain Four Ns on either side of any nucleotide (A, C, G, or T), e.g. NNNNANNNN, in all .fastq files in a directory and saves the read plus associated headers and quality to a new file.
+> 1. Write a bash script that searches for read sequences that contain four Ns on both sides of any nucleotide (A, C, G, or T), e.g. NNNNANNNN, in all .fastq files in a directory and then saves the read plus associated headers and quality to a new file.
 > 2. Run that script using a batch job on the LSF scheduler. 
 >
 > > ## Solution
