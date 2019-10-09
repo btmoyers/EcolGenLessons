@@ -15,8 +15,7 @@ objectives:
 keypoints:
 - Scripts are a collection of commands executed together.
 - Anyone can write a script!
-- Bioinformatics workflows have a plug-and-play approach. The output of one tool can be easily
-used as input to another tool due to data standards.
+- The output of one bioinformatic tool can be easily used as input to another tool due to data standards.
 - Many remote computers run jobs using a schedule program.
 ---
 
