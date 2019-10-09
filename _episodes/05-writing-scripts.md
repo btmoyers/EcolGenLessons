@@ -1,7 +1,7 @@
 ---
 title: "Writing Scripts and Working with Data"
-teaching: 20
-exercises: 20
+teaching: 45
+exercises: 25
 questions:
 - How can we automate a commonly used set of commands?
 objectives:
@@ -9,9 +9,15 @@ objectives:
 - Write a basic shell script.
 - Use the `bash` command to execute a shell script.
 - Use `chmod` to make a script an executable program.
+- Bioinformatic workflows.
+- Download data to a remote computer.
+- Load a program module and submit a job.
 keypoints:
 - Scripts are a collection of commands executed together.
-- Downloading information to remote computers.
+- Anyone can write a script!
+- Bioinformatics workflows have a plug-and-play approach: the output of one tool can be easily
+used as input to another tool due to data standards.
+- Many remote computers run jobs using a schedule program.
 ---
 
 <script language="javascript" type="text/javascript">
@@ -217,7 +223,32 @@ $ ./bad-reads-script.sh
 
 The script should run the same way as before, but now we've created our very own computer program!
 
-You will learn more about writing scripts in [a later lesson](https://datacarpentry.org/wrangling-genomics/05-automation/index.html).
+You can learn more about writing scripts in an [optional lesson](https://datacarpentry.org/wrangling-genomics/05-automation/index.html).
+
+# Bioinformatic workflows
+
+When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass
+through a number of  different tools in order to generate your final desired output. The execution of this set of
+tools in a specified order is commonly referred to as a *workflow* or a *pipeline*. 
+
+An example of the workflow that one could use is provided below with a brief description of each step. 
+
+![workflow](../img/variant_calling_workflow.png)
+
+
+1. Quality control - Assessing quality using FastQC
+2. Quality control - Trimming and/or filtering reads (if necessary)
+3. Align reads to reference genome 
+4. Perform post-alignment clean-up
+5. Variant calling
+
+These workflows in bioinformatics adopt a plug-and-play approach in that the output of one tool can be easily
+used as input to another tool without any extensive configuration. Having standards for data formats is what 
+makes this feasible. Standards ensure that data is stored in a way that is generally accepted and agreed upon 
+within the community. The tools that are used to analyze data at different stages of the workflow are therefore 
+built under the assumption that the data will be provided in a specific format.  
+
+Often times, the first step in a bioinformatic workflow is getting the data you want to work with onto a computer where you can work with it. If you have outsourced sequencing of your data, the sequencing center will usually provide you with a link that you can use to download your data. You will also download archived data for your reproductive analyses.
 
 ## Moving and Downloading Data
 
@@ -309,3 +340,5 @@ It's important to note that both ``curl`` and ``wget`` download to the computer 
 command line belongs to. So, if you are logged into AWS on the command line and execute
 the ``curl`` command above in the AWS terminal, the file will be downloaded to your AWS
 machine, not your local one.
+
+
