@@ -40,7 +40,6 @@ function change_content_by_platform(form_control){
 window.onload = set_page_view_defaults;
 </script>
 
-
 ## Writing files
 
 We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
@@ -151,9 +150,16 @@ grep -B1 -A2 NNNNNNNNNN *.fastq > scripted_bad_reads.txt
 ~~~
 {: .bash}
 
-Type your `grep` command into the file and save it as before. Be careful that you did not add the `$` at the beginning of the line.
+Type your `grep` command into the file. Because this is a bash script, it is good practice and customary to add one additional line to specify that at the beginning of the script:
 
-Now comes the neat part. We can run this script. Type:
+~~~
+#!/bin/bash
+
+grep -B1 -A2 NNNNNNNNNN *.fastq > scripted_bad_reads.txt
+~~~
+{: .bash}
+
+Now save the file as before, and here comes the neat part. We can run this script! Type:
 
 ~~~
 $ bash bad-reads-script.sh
@@ -225,7 +231,66 @@ The script should run the same way as before, but now we've created our very own
 
 You can learn more about writing scripts in an [optional lesson](https://datacarpentry.org/wrangling-genomics/05-automation/index.html).
 
-# Bioinformatic workflows
+## Submitting jobs
+
+Many remote servers organize jobs using a scheduler software. There are many of these! The three servers available to all UMass Boston researchers each use a different scheduler (MGHPPCC = LSF; chimera = Grid Engine; gibbs = Slurm). The job of these programs is to efficiently manage computation resources for many users at once. You will often need to specify (or make a best guess) for the amount of resources needed for a particular job, which can include time, the number of nodes/cores, RAM, or GPU. It's usually a good idea to test out a large or complex job on a small subset of the data first, and then use that to work out any bugs and estimate the total amount of resources you will need. It is also a good idea to be generous with your estimates, especially time (but being too generous can get you into trouble with system maintainers, especially when resources are in high demand).
+
+Since we're working on the MGHPCC, let's talk about how to schedule jobs and try it out. There is a lot more information on scheduling on the UMass RC [wiki](http://wiki.umassrc.org/wiki/index.php/Submitting_Cluster_Jobs). For now, just know that there are two types of jobs, interactive and batch. **Interactive jobs** are ones where you get a command line on a compute node. This is great for compiling software or running programs that require you watch progress as it runs. **Batch jobs** are ones that you can submit, walk away, and get the results later. Since you interact with them in different ways, the way you submit these kinds of jobs are also different.
+
+To submit a batch job on the MGHPCC we use `bsub`. For example:
+
+~~~
+$ bsub -q long hostname
+~~~
+{: .bash}
+
+This will submit a job to the long queue and run the command `hostname`. Let's submit a bash job with our bad_reads_script.sh:
+
+~~~
+$ bsub < ./bad-reads-script.sh
+~~~
+{: .bash}
+
+or, if the script is in our home directory:
+
+~~~
+$ bsub < $HOME/bad-reads-script.sh
+~~~
+{: .bash}
+
+We have not specified memory or time, so the LSF scheduler defauls to 1GB and 60 minutes:
+
+~~~
+Memory Usage not specified, setting to 1GB: -R rusage[mem=1024]
+Job runtime not specified, setting to 60 minutes: -W 60
+Job <5721> is submitted to default queue <long>.
+~~~
+{: .bash}
+
+You will get an email when the job completes!
+
+Commands submitted to LSF with `bsub` run exactly as they would from the command line. Shell scripts and other applications either have to be in your environmental $PATH or list the path explicitly (e.g. with `./` or `$HOME/`, as above), and they have to have executable permissions set. If you aren't sure, start an interactive job (see the wiki) and try to run your command.
+
+You will notice that we did not need to schedule this light and fast bash script earlier! This will not be the case for larger or more complex jobs, which is why we're learning this now.
+
+> ## Exercise
+>
+> 1. Write a bash script that searches for sequences that contain Four Ns on either side of any nucleotide (A, C, G, or T), e.g. NNNNANNNN, in all .fastq files in a directory and saves the read plus associated headers and quality to a new file.
+> 2. Run that script using a batch job on the LSF scheduler. 
+>
+> > ## Solution
+> > 
+> > Use `nano weird_reads_script.sh` to create the script with lines:
+> > `#!/bin/bash`
+> > `grep -B1 -A2 NNNN[AGTC]NNNN *.fastq > scripted_weird_reads.txt`
+> > Modify permissions with chmod `+x weird_reads_script.sh`.
+> > Submit the job with `bsub < ./weird_reads_script.sh`.
+> >
+> {: .solution}
+>
+{: .challenge}
+
+## Bioinformatic workflows
 
 When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass
 through a number of  different tools in order to generate your final desired output. The execution of this set of
@@ -234,7 +299,6 @@ tools in a specified order is commonly referred to as a *workflow* or a *pipelin
 An example of the workflow that one could use is provided below with a brief description of each step. 
 
 ![workflow](../img/variant_calling_workflow.png)
-
 
 1. Quality control - Assessing quality using FastQC
 2. Quality control - Trimming and/or filtering reads (if necessary)
