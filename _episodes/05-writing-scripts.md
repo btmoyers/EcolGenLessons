@@ -20,26 +20,6 @@ used as input to another tool due to data standards.
 - Many remote computers run jobs using a schedule program.
 ---
 
-<script language="javascript" type="text/javascript">
-function set_page_view_defaults() {
-    document.getElementById('div_win').style.display = 'block';
-    document.getElementById('div_unix').style.display = 'none';
-};
-
-function change_content_by_platform(form_control){
-    if (!form_control || document.getElementById(form_control).value == 'win') {
-        set_page_view_defaults();
-    } else if (document.getElementById(form_control).value == 'unix') {
-        document.getElementById('div_win').style.display = 'none';
-        document.getElementById('div_unix').style.display = 'block';
-    } else {
-        alert("Error: Missing platform value for 'change_content_by_platform()' script!");
-    }
-}
-
-window.onload = set_page_view_defaults;
-</script>
-
 ## Writing files
 
 We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
