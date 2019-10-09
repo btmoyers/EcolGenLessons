@@ -223,7 +223,7 @@ $ bsub -q long hostname
 ~~~
 {: .bash}
 
-This will submit a job to the long queue and run the command `hostname`. Let's submit a bash job with our bad_reads_script.sh:
+This will submit a job to the long queue and run the command `hostname`. Let's submit a batch job with our bad_reads_script.sh:
 
 ~~~
 $ bsub < ./bad-reads-script.sh
